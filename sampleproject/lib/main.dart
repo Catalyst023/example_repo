@@ -1,60 +1,78 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(home: Home()));
 
 // ignore: use_key_in_widget_constructors
-class Home extends StatelessWidget {
-  
+class Home extends StatefulWidget {
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int _counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("My First Flutter App"),
-        backgroundColor: Colors.red[600],
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-        children: [       
-        Expanded(flex: 1, child: Image.asset("assets/lee.jpg")),
-        
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-          Text("Row 1"),
-          Expanded(
-            flex: 1,
-            child: Container(
-              color: Colors.grey,
-              padding: EdgeInsets.symmetric(),
+          title: const Text("My First Flutter App"),
+          backgroundColor: Colors.red[600],
+          actions: [
+            IconButton(
+              icon: Icon(
+                Icons.search,
+              ),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.favorite,
+              ),
+              onPressed: () {},
+            )
+          ]),
+      body: Padding(
+        padding: EdgeInsets.all(15.0),
+        child: Column(children: [
+          Text("Row $_counter"),
+          Row(children: [
+            Center(
+              child: CircleAvatar(
+                child: Image.asset("assets/luca.jpg"),
+                radius: 100.0,
+              ),
+            ),
+          ]),
+          Row(children: [
+            Text("Row $_counter"),
+            Container(
+              color: Colors.green,
               child: Text("Container 1"),
             ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
+            Icon(
+              Icons.photo_camera,
+            ),
+            Container(
               color: Colors.amber,
-              padding: EdgeInsets.symmetric(),
               child: Text("Container 2"),
             ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
+            Container(
               color: Colors.blue,
-              padding: EdgeInsets.symmetric(),
               child: Text("Container 3"),
             ),
-          ),
-          
-        ],),
-        
-      ],),
+          ]),
+        ]),
+      ),
       floatingActionButton: FloatingActionButton(
         child: const Text("Click"),
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            _counter++;
+          });
+        },
       ),
     );
   }
