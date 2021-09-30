@@ -77,7 +77,9 @@ class _HomeState extends State<Home> {
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Text("Click"),
+        child: Icon(
+          Icons.add,
+        ),
         onPressed: () {
           setState(() {
             _counter++;
