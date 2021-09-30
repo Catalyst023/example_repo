@@ -7,6 +7,8 @@ void main() => runApp(MaterialApp(home: Home()));
 
 // ignore: use_key_in_widget_constructors
 class Home extends StatefulWidget {
+  //const Home(Key? key) : super(key: key);
+
   @override
   State<Home> createState() => _HomeState();
 }
@@ -42,9 +44,17 @@ class _HomeState extends State<Home> {
             Center(
               child: CircleAvatar(
                 child: Image.asset("assets/luca.jpg"),
-                radius: 100.0,
+                radius: 50.0,
               ),
             ),
+            CircleAvatar(
+                child: Image.asset("assets/zeppelin.jpg"),
+                radius: 50.0,
+              ),
+            CircleAvatar(
+                child: Image.asset("assets/lee.jpg"),
+                radius: 50.0,
+              ),
           ]),
           Row(children: [
             Text("Row $_counter"),
@@ -73,6 +83,35 @@ class _HomeState extends State<Home> {
             _counter++;
           });
         },
+      ),
+    );
+  }
+}
+
+class Description extends StatefulWidget {
+  const Description({ Key? key }) : super(key: key);
+
+  @override
+  _DescriptionState createState() => _DescriptionState();
+}
+
+class _DescriptionState extends State<Description> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Descriptions"),
+
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(30.0),
+        child: Column(children: const [
+          Text("No descriptions", 
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 30.0,
+          )),
+        ]),
       ),
     );
   }
